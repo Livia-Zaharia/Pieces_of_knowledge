@@ -175,6 +175,18 @@ For more details read [here](https://www.phind.com/search?cache=nre288el69152ptr
 19. the command to build the library has the -xclang -fcuda-allow variadic-functions because [this](https://github.com/tensorflow/tensorflow/issues/62339)
 ` /usr/bin/bazel build --verbose_failures --config=opt --config=cuda --define=no_tensorflow_py_deps=true --copt=-Xclang --copt=-fcuda-allow-variadic-functions //tensorflow/tools/pip_package:build_pip_package`
 
+20. until  now  we have built a package-builder but we have to build the pip package so first we need patchelf
 
+`sudo apt-get install patchelf` because [otherwise](https://www.phind.com/search?cache=vs5bl8zy0t7ni73v46nj9vzr)
+
+21. `./bazel-bin/tensorflow/tools/pip_package/build_pip_package /tmp/tensorflow_pkg`
+Builds the whl package
+Important! location in temporary folder- better to copy the package to another location.
+
+22. keep in mind- this line is if you have the whl at that adress.
+ `pip install /tmp/tensorflow_pkg/tensorflow-version-tags.whl`
+
+ also if you don't want to install it globally you could install it in venv.
 
 [Some details about what goes on between bazel- clang and tensorflow](https://www.phind.com/search?cache=pisgfraz05o6kly0449pn1v4)
+[Some reading on the process- pretty good even though it is an older version](https://medium.com/analytics-vidhya/building-tensorflow-2-0-with-gpu-support-and-tensorrt-on-ubuntu-18-04-lts-part-2-ff2b1482c0a3)
