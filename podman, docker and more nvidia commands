@@ -16,6 +16,10 @@ to see the config of your nvidia driver(hardware)
 nvcc --version
 to see the config of cuda compilation tools
 
+just-semantic-search-all-py3.11livialinux@livialinux-GL553VD:~/server/just-semantic-search$ dpkg -l | grep nvidia-container-toolkit
+sudo docker info | grep Runtimes
+ii  nvidia-container-toolkit                         1.17.4-1                                   amd64        NVIDIA Container toolkit
+ii  nvidia-container-toolkit-base                    1.17.4-1                                   amd64        NVIDIA Container Toolkit Base
 
 -------------------------
 just-semantic-search-all-py3.11livialinux@livialinux-GL553VD:~/server/just-semantic-search$ nvidia-smi
