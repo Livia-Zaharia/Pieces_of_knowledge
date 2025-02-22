@@ -18,31 +18,47 @@ This is used to pull the image of the container just in case it doesn't updates 
 
 # DOCKER
 
+```bash
 docker volume prune
 docker network prune
 docker system prune -a
- List running containers
+```
+List running containers
+```bash
 docker ps
+```
 
-# Stop all running containers
+Stop all running containers
+```bash
 docker stop $(docker ps -a -q)
+```
 
-# Remove all stopped containers
+Remove all stopped containers
+```bash
 docker rm $(docker ps -a -q)
+```
 
- List images
+List images
+```bash
 docker images
+```
 
-# Remove the specific image
+Remove the specific image
+```bash
 docker rmi raychanan/mineru
+```
 
-# Or remove all images (be careful with this if you have other important images)
-# docker rmi $(docker images -q)
+Or remove all images (be careful with this if you have other important images)
+```bash
+docker rmi $(docker images -q)
+```
 
-
-# Remove unused data
+Remove unused data
+```bash
 docker system prune -a
-NVIDA 
+```
+
+# NVIDA 
 
 nvidia-smi
 to see the config of your nvidia driver(hardware)
