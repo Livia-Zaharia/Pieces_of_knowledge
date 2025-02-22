@@ -1,13 +1,47 @@
-PODMAN
+# PODMAN
 
+```bash
 podman-compose up
-podman-compose down
+```
+This pulls the image and runs the containers
 
-DOCKER
+```bash
+podman-compose down
+```
+This is used after CTRL+C to stop running containers in the background
+
+```bash
+podman pull
+```
+This is used to pull the image of the container just in case it doesn't updates at up command- especially for those marked with latest
+
+
+# DOCKER
+
 docker volume prune
 docker network prune
 docker system prune -a
+ List running containers
+docker ps
 
+# Stop all running containers
+docker stop $(docker ps -a -q)
+
+# Remove all stopped containers
+docker rm $(docker ps -a -q)
+
+ List images
+docker images
+
+# Remove the specific image
+docker rmi raychanan/mineru
+
+# Or remove all images (be careful with this if you have other important images)
+# docker rmi $(docker images -q)
+
+
+# Remove unused data
+docker system prune -a
 NVIDA 
 
 nvidia-smi
@@ -137,83 +171,8 @@ sudo apt-get update
 
 # Install the toolkit
 sudo apt-get install -y nvidia-container-toolkit
-File '/usr/share/keyrings/nvidia-container-toolkit-keyring.gpg' exists. Overwrite? (y/N) y
-deb [signed-by=/usr/share/keyrings/nvidia-container-toolkit-keyring.gpg] https://nvidia.github.io/libnvidia-container/stable/deb/$(ARCH) /
-deb [signed-by=/usr/share/keyrings/nvidia-container-toolkit-keyring.gpg] https://nvidia.github.io/libnvidia-container/stable/ubuntu18.04/$(ARCH) /
-#deb [signed-by=/usr/share/keyrings/nvidia-container-toolkit-keyring.gpg] https://nvidia.github.io/libnvidia-container/experimental/deb/$(ARCH) /
-#deb [signed-by=/usr/share/keyrings/nvidia-container-toolkit-keyring.gpg] https://nvidia.github.io/libnvidia-container/experimental/ubuntu18.04/$(ARCH) /
-Get:1 https://nvidia.github.io/libnvidia-container/stable/deb/amd64  InRelease [1.477 B]
-Get:2 http://security.ubuntu.com/ubuntu jammy-security InRelease [129 kB]                                             
-Hit:3 http://archive.ubuntu.com/ubuntu jammy InRelease                                                                
-Get:4 https://nvidia.github.io/libnvidia-container/stable/ubuntu18.04/amd64  InRelease [1.484 B]                      
-Get:5 https://cli.github.com/packages stable InRelease [3.917 B]                                                      
-Get:6 http://archive.ubuntu.com/ubuntu jammy-updates InRelease [128 kB]                                               
-Ign:7 http://packages.linuxmint.com virginia InRelease                                                                
-Hit:8 https://packages.microsoft.com/repos/code stable InRelease                                                      
-Get:9 https://dl.google.com/linux/chrome/deb stable InRelease [1.825 B]                                               
-Get:10 https://nvidia.github.io/libnvidia-container/stable/deb/amd64  Packages [16,7 kB]                              
-Hit:11 http://packages.linuxmint.com virginia Release                                                            
-Get:12 http://archive.ubuntu.com/ubuntu jammy-backports InRelease [127 kB]
-Hit:13 https://ppa.launchpadcontent.net/deadsnakes/ppa/ubuntu jammy InRelease
-Get:14 https://nvidia.github.io/libnvidia-container/stable/ubuntu18.04/amd64  Packages [29,2 kB]
-Hit:15 https://ppa.launchpadcontent.net/graphics-drivers/ppa/ubuntu jammy InRelease
-Hit:16 https://ppa.launchpadcontent.net/longsleep/golang-backports/ubuntu jammy InRelease
-Get:17 https://dl.google.com/linux/chrome/deb stable/main amd64 Packages [1.210 B]
-Get:18 http://security.ubuntu.com/ubuntu jammy-security/main amd64 DEP-11 Metadata [43,1 kB]
-Get:19 http://security.ubuntu.com/ubuntu jammy-security/restricted amd64 DEP-11 Metadata [208 B]
-Get:20 http://security.ubuntu.com/ubuntu jammy-security/universe amd64 DEP-11 Metadata [125 kB]
-Get:21 http://security.ubuntu.com/ubuntu jammy-security/multiverse amd64 DEP-11 Metadata [208 B]
-Get:22 http://archive.ubuntu.com/ubuntu jammy-updates/main i386 Packages [756 kB]
-Get:24 http://archive.ubuntu.com/ubuntu jammy-updates/main amd64 Packages [2.338 kB]
-Get:25 http://archive.ubuntu.com/ubuntu jammy-updates/main amd64 DEP-11 Metadata [103 kB]
-Get:26 http://archive.ubuntu.com/ubuntu jammy-updates/restricted amd64 DEP-11 Metadata [212 B]
-Get:27 http://archive.ubuntu.com/ubuntu jammy-updates/universe i386 Packages [757 kB]
-Get:28 http://archive.ubuntu.com/ubuntu jammy-updates/universe amd64 Packages [1.187 kB]
-Get:29 http://archive.ubuntu.com/ubuntu jammy-updates/universe amd64 DEP-11 Metadata [359 kB]
-Get:30 http://archive.ubuntu.com/ubuntu jammy-updates/multiverse amd64 DEP-11 Metadata [940 B]
-Get:31 http://archive.ubuntu.com/ubuntu jammy-backports/main amd64 DEP-11 Metadata [7.012 B]
-Get:32 http://archive.ubuntu.com/ubuntu jammy-backports/restricted amd64 DEP-11 Metadata [212 B]
-Get:33 http://archive.ubuntu.com/ubuntu jammy-backports/universe i386 Packages [18,4 kB]
-Get:34 http://archive.ubuntu.com/ubuntu jammy-backports/universe amd64 Packages [30,0 kB]
-Get:35 http://archive.ubuntu.com/ubuntu jammy-backports/universe Translation-en [16,6 kB]
-Get:36 http://archive.ubuntu.com/ubuntu jammy-backports/universe amd64 DEP-11 Metadata [17,7 kB]
-Get:37 http://archive.ubuntu.com/ubuntu jammy-backports/multiverse amd64 DEP-11 Metadata [212 B]
-Fetched 6.202 kB in 2s (3.044 kB/s)              
-Reading package lists... Done
-Reading package lists... Done
-Building dependency tree... Done
-Reading state information... Done
-The following additional packages will be installed:
-  libnvidia-container-tools libnvidia-container1 nvidia-container-toolkit-base
-The following NEW packages will be installed:
-  libnvidia-container-tools libnvidia-container1 nvidia-container-toolkit nvidia-container-toolkit-base
-0 upgraded, 4 newly installed, 0 to remove and 33 not upgraded.
-Need to get 5.805 kB of archives.
-After this operation, 27,7 MB of additional disk space will be used.
-Get:1 https://nvidia.github.io/libnvidia-container/stable/deb/amd64  libnvidia-container1 1.17.4-1 [925 kB]
-Get:2 https://nvidia.github.io/libnvidia-container/stable/deb/amd64  libnvidia-container-tools 1.17.4-1 [20,2 kB]
-Get:3 https://nvidia.github.io/libnvidia-container/stable/deb/amd64  nvidia-container-toolkit-base 1.17.4-1 [3.672 kB]
-Get:4 https://nvidia.github.io/libnvidia-container/stable/deb/amd64  nvidia-container-toolkit 1.17.4-1 [1.188 kB]
-Fetched 5.805 kB in 1s (7.485 kB/s)                 
-Selecting previously unselected package libnvidia-container1:amd64.
-(Reading database ... 713647 files and directories currently installed.)
-Preparing to unpack .../libnvidia-container1_1.17.4-1_amd64.deb ...
-Unpacking libnvidia-container1:amd64 (1.17.4-1) ...
-Selecting previously unselected package libnvidia-container-tools.
-Preparing to unpack .../libnvidia-container-tools_1.17.4-1_amd64.deb ...
-Unpacking libnvidia-container-tools (1.17.4-1) ...
-Selecting previously unselected package nvidia-container-toolkit-base.
-Preparing to unpack .../nvidia-container-toolkit-base_1.17.4-1_amd64.deb ...
-Unpacking nvidia-container-toolkit-base (1.17.4-1) ...
-Selecting previously unselected package nvidia-container-toolkit.
-Preparing to unpack .../nvidia-container-toolkit_1.17.4-1_amd64.deb ...
-Unpacking nvidia-container-toolkit (1.17.4-1) ...
-Setting up nvidia-container-toolkit-base (1.17.4-1) ...
-Setting up libnvidia-container1:amd64 (1.17.4-1) ...
-Setting up libnvidia-container-tools (1.17.4-1) ...
-Setting up nvidia-container-toolkit (1.17.4-1) ...
-Processing triggers for libc-bin (2.35-0ubuntu3.9) ...
-just-semantic-search-all-py3.11livialinux@livialinux-GL553VD:~/server/just-semantic-search$ # Configure Docker to use NVIDIA runtime
+
+# Configure Docker to use NVIDIA runtime
 sudo nvidia-ctk runtime configure --runtime=docker
 
 
