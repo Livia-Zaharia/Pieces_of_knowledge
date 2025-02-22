@@ -16,6 +16,7 @@ podman pull
 This is used to pull the image of the container just in case it doesn't updates at up command- especially for those marked with latest
 
 
+
 # DOCKER
 
 ```bash
@@ -58,22 +59,14 @@ Remove unused data
 docker system prune -a
 ```
 
+
+
 # NVIDA 
 
+```bash
 nvidia-smi
-to see the config of your nvidia driver(hardware)
 
-nvcc --version
-to see the config of cuda compilation tools
 
-just-semantic-search-all-py3.11livialinux@livialinux-GL553VD:~/server/just-semantic-search$ dpkg -l | grep nvidia-container-toolkit
-sudo docker info | grep Runtimes
-ii  nvidia-container-toolkit                         1.17.4-1                                   amd64        NVIDIA Container toolkit
-ii  nvidia-container-toolkit-base                    1.17.4-1                                   amd64        NVIDIA Container Toolkit Base
-
--------------------------
-just-semantic-search-all-py3.11livialinux@livialinux-GL553VD:~/server/just-semantic-search$ nvidia-smi
-Sat Feb 22 13:54:28 2025       
 +---------------------------------------------------------------------------------------+
 | NVIDIA-SMI 535.183.01             Driver Version: 535.183.01   CUDA Version: 12.2     |
 |-----------------------------------------+----------------------+----------------------+
@@ -97,13 +90,35 @@ Sat Feb 22 13:54:28 2025
 |    0   N/A  N/A    244818      G   ...erProcess --variations-seed-version       60MiB |
 |    0   N/A  N/A    248366      G   ...seed-version=20250221-050109.072000       53MiB |
 +---------------------------------------------------------------------------------------+
-just-semantic-search-all-py3.11livialinux@livialinux-GL553VD:~/server/just-semantic-search$ nvcc --version
+
+```
+to see the config of your nvidia driver(hardware)
+
+```bash
+nvcc --version
+
+
 nvcc: NVIDIA (R) Cuda compiler driver
 Copyright (c) 2005-2021 NVIDIA Corporation
 Built on Thu_Nov_18_09:45:30_PST_2021
 Cuda compilation tools, release 11.5, V11.5.119
 Build cuda_11.5.r11.5/compiler.30672275_0
-just-semantic-search-all-py3.11livialinux@livialinux-GL553VD:~/server/just-semantic-search$ dpkg -l | grep nvidia-docker
+
+```
+to see the config of cuda compilation tools
+
+```bash
+dpkg -l | grep nvidia-container-toolkit
+```
+
+```bash
+sudo docker info | grep Runtimes
+ii  nvidia-container-toolkit                         1.17.4-1                                   amd64        NVIDIA Container toolkit
+ii  nvidia-container-toolkit-base                    1.17.4-1                                   amd64        NVIDIA Container Toolkit Base
+```
+
+-------------------------
+dpkg -l | grep nvidia-docker
 just-semantic-search-all-py3.11livialinux@livialinux-GL553VD:~/server/just-semantic-search$ sudo docker info | grep Runtimes
 [sudo] password for livialinux:                       
  Runtimes: io.containerd.runc.v2 runc
